@@ -114,7 +114,7 @@ _install_appman() {
 	echo '--------------------------------------------------------------------------'
 	printf " %bInstalling \"AppMan\" in %b\033[0m\n" "${Green}" "$BINDIR"
 	if [ -n "$APPIMAGE" ]; then
-		\mv "$APPIMAGE" "$SCRIPT"
+		\mv -f "$APPIMAGE" "$SCRIPT"
 	else
 		_script_downloader && chmod a+x "$SCRIPT"
 		echo '--------------------------------------------------------------------------'

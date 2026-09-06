@@ -77,7 +77,7 @@ _prepare_am_directory() {
 	URL="https://raw.githubusercontent.com/ivan-hc/AM/$AM_BRANCH/APP-MANAGER"
 	SCRIPT="APP-MANAGER"
 	if [ -n "$APPIMAGE" ]; then
-		\mv "$APPIMAGE" "$SCRIPT"
+		\mv -f "$APPIMAGE" "$SCRIPT"
 	elif ! _script_downloader; then
 		echo "💀 ERROR: Cannot download am"
 		exit 1
