@@ -1921,7 +1921,7 @@ _use_sync() {
 		AMCLI_ONLINE_CONTENT=$(_use_online_reading_tool "$AMREPO"/APP-MANAGER)
 		if echo "$AMCLI_ONLINE_CONTENT" | grep -q AMCLI; then
 			if [ "$CLI" = am ]; then
-				if [ -f "$APPMANCONFIG"/appman-mode ]; then
+				if [ -f "$APPMANCONFIG"/appman-mode ] && [ -z "$IS_APPIMAGE" ]; then
 					if [ -d "$(readlink -f /opt)/am/modules" ]; then
 						MODULES_PATH="$(readlink -f /opt)/am/modules"
 						if [ -w "$(readlink -f /opt)/am" ]; then
