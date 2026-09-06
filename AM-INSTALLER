@@ -72,7 +72,6 @@ _install_am() {
 	SCRIPT="$CACHEDIR/INSTALL-AM.sh"
 	mkdir -p "$CACHEDIR" || true
 	rm -f "$CACHEDIR"/INSTALL-AM.sh || true
-	_script_downloader && chmod a+x "$CACHEDIR"/INSTALL-AM.sh
 	#cp ./INSTALL "$CACHEDIR"/INSTALL-AM.sh && chmod a+x "$CACHEDIR"/INSTALL-AM.sh # for developers
 	if command -v sudo >/dev/null 2>&1; then
 		SUDOCMD="sudo"
@@ -83,8 +82,10 @@ _install_am() {
 		exit 1
 	fi
 	if [ -n "$APPIMAGE" ]; then
-		$SUDOCMD "$APPDIR"/INSTALL-AM-APPIMAGE.sh "$APPIMAGE"
+		cp -f "$APPDIR"/INSTALL-AM-APPIMAGE.sh "$CACHEDIR"/.
+		$SUDOCMD "$CACHEDIR"/INSTALL-AM-APPIMAGE.sh "$APPIMAGE" && rm -f "$CACHEDIR"/INSTALL-AM-APPIMAGE.sh
 	else
+		_script_downloader && chmod a+x "$CACHEDIR"/INSTALL-AM.sh
 		$SUDOCMD "$CACHEDIR"/INSTALL-AM.sh && rm -f "$CACHEDIR"/INSTALL-AM.sh
 	fi
 }
