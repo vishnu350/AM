@@ -198,7 +198,7 @@ else
 	if [ ! -t 0 ]; then
 	    [ -z "\$TERMINAL" ] && TERMINAL=x-terminal-emulator
 	    if command -v "\$TERMINAL" >/dev/null 2>&1; then
-	        exec "\$TERMINAL" -e sh -c '"\$0" "\$@"; echo; echo Press CTRL+C to close this window...; sleep 1h' "\$HERE$EXEC" "\$@"
+	        exec "\$TERMINAL" -e sh -c '"\$0" -h; echo; echo Press CTRL+C to close this window...; sleep 1h' "\$HERE$EXEC"
 	    fi
 	else
 	    exec "\$HERE$EXEC" "\$@"
