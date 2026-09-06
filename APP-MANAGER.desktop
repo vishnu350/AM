@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=APP-MANAGER
 Comment=AppImage Package Manager: Manage AppImages like never before!
-Exec=x-terminal-emulator -e sh -c "APP-MANAGER -f; echo; echo 'Press Enter to close...'; read -r"
+Exec=APP-MANAGER -h
 Icon=APP-MANAGER
 Type=Application
 Categories=System;Settings;
